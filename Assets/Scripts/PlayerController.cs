@@ -11,6 +11,8 @@ namespace MustafaNaqvi
 
         private static readonly int Running = Animator.StringToHash("Running");
 
+        private float _horizontal, _vertical;
+
         private void Start()
         {
             if (ReferenceEquals(playerSprite, null) && TryGetComponent<SpriteRenderer>(out var spriteRenderer))
@@ -25,15 +27,19 @@ namespace MustafaNaqvi
 
         private void Update()
         {
-            HandleMovementInput();
+            HandleInput();
+            HandleMovement();
         }
 
-        private void HandleMovementInput()
+        private void HandleInput()
         {
-            var horizontal = Input.GetAxis("Horizontal");
-            var vertical = Input.GetAxis("Vertical");
+            _horizontal = Input.GetAxis("Horizontal");
+            _vertical = Input.GetAxis("Vertical");
+        }
 
-            var movement = new Vector3(horizontal, vertical, 0f);
+        private void HandleMovement()
+        {
+            var movement = new Vector3(_horizontal, _vertical, 0f).normalized;
             if (Equals(movement, Vector3.zero))
             {
                 playerAnimator.SetBool(Running, false);
