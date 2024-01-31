@@ -12301,7 +12301,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spawnPoint: {fileID: 4072478132812104554}
-  enemyPrefab: {fileID: 5791267542099851275, guid: 5af833a13d677fc40805770c5384e0ae, type: 3}
+  enemyPrefab: {fileID: 7943285740979072603, guid: 6b8bbd2114ef76c42a00daeba95f2027, type: 3}
   spawnTime: 4
 --- !u!61 &1808394796013272936
 BoxCollider2D:
@@ -17857,7 +17857,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spawnPoint: {fileID: 4246543355438342608}
-  enemyPrefab: {fileID: 5791267542099851275, guid: 5af833a13d677fc40805770c5384e0ae, type: 3}
+  enemyPrefab: {fileID: 7943285740979072603, guid: dbc30eefef460c844bf03c0f7bb110a2, type: 3}
   spawnTime: 2
 --- !u!61 &3462460528346089715
 BoxCollider2D:
@@ -18194,7 +18194,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spawnPoint: {fileID: 4320381198616585558}
-  enemyPrefab: {fileID: 5791267542099851275, guid: 5af833a13d677fc40805770c5384e0ae, type: 3}
+  enemyPrefab: {fileID: 7943285740979072603, guid: 5946ed36698ff274383e69703f6a6d29, type: 3}
   spawnTime: 1
 --- !u!61 &1993298946516587348
 BoxCollider2D:
@@ -19661,7 +19661,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spawnPoint: {fileID: 6810085116052324038}
-  enemyPrefab: {fileID: 5791267542099851275, guid: 5af833a13d677fc40805770c5384e0ae, type: 3}
+  enemyPrefab: {fileID: 7943285740979072603, guid: 3be61f92061f00243a4a324d3131fe87, type: 3}
   spawnTime: 3
 --- !u!61 &8760887595902812568
 BoxCollider2D:
