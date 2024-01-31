@@ -11,6 +11,7 @@ namespace MustafaNaqvi
 
         private static readonly int Running = Animator.StringToHash("Running");
 
+        private FacingDirection _facingDirection;
         private float _horizontal, _vertical;
 
         private void Start()
@@ -29,6 +30,7 @@ namespace MustafaNaqvi
         {
             HandleInput();
             HandleMovement();
+            HandleRotation();
         }
 
         private void HandleInput()
@@ -49,5 +51,40 @@ namespace MustafaNaqvi
             playerRigidBody.MovePosition(transform.position + movement * (moveSpeed + Time.deltaTime));
             playerAnimator.SetBool(Running, true);
         }
+
+        private void HandleRotation()
+        {
+            if (_vertical.Equals(0f) && _horizontal.Equals(0)) return;
+
+            _facingDirection = _vertical switch
+            {
+                0f when _horizontal > 0f => FacingDirection.Right,
+                0f when _horizontal < 0f => FacingDirection.Left,
+                > 0f when _horizontal > 0f => FacingDirection.Right,
+                > 0f when _horizontal < 0f => FacingDirection.Left,
+                > 0f when _horizontal.Equals(0f) => FacingDirection.Up,
+                < 0f when _horizontal > 0f => FacingDirection.Right,
+                < 0f when _horizontal < 0f => FacingDirection.Left,
+                < 0f when _horizontal.Equals(0f) => FacingDirection.Down,
+                _ => FacingDirection.Right
+            };
+
+            playerSprite.flipX = _facingDirection switch
+            {
+                FacingDirection.Right => false,
+                FacingDirection.Left => true,
+                FacingDirection.Up => false,
+                FacingDirection.Down => false,
+                _ => playerSprite.flipX
+            };
+        }
+    }
+
+    public enum FacingDirection
+    {
+        Right,
+        Left,
+        Up,
+        Down
     }
 }
