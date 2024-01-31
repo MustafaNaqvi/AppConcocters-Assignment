@@ -32,7 +32,7 @@ namespace MustafaNaqvi
             Mana = Mathf.MoveTowards(Mana, manaMaxValue, Time.deltaTime * manaRegenerationTime);
         }
 
-        private void ConsumeMana(float value)
+        public void ConsumeMana(float value)
         {
             if (Mana <= 0f)
             {
@@ -43,6 +43,6 @@ namespace MustafaNaqvi
             Mana -= value;
         }
 
-        private void ResetMana() => Mana = 0f;
+        public void ResetMana() => Mana = 0f;
     }
 }
