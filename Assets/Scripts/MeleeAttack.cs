@@ -13,6 +13,7 @@ namespace MustafaNaqvi
         private static readonly int AttackDown = Animator.StringToHash("Attack_Down");
 
         internal bool Attacking;
+        public float damageToGive;
 
         private void Start()
         {
@@ -101,16 +102,18 @@ namespace MustafaNaqvi
             weaponCollider.size = Vector2.one * 0.25f;
         }
 
-        private void GiveDamage()
+        private void GiveDamage(CharacterHealth health)
         {
-            // Give Damage
+            if (ReferenceEquals(health, null)) return;
+            health.Damage(damageToGive);
         }
 
         private void OnCollisionEnter2D(Collision2D other)
         {
             if (!other.collider.CompareTag("Damageable")) return;
             if (!ReferenceEquals(other.otherCollider, weaponCollider)) return;
-            GiveDamage();
+            if (!other.collider.TryGetComponent<CharacterHealth>(out var health)) return;
+            GiveDamage(health);
         }
     }
 }
