@@ -11,6 +11,9 @@ namespace MustafaNaqvi
 
         private static readonly int Running = Animator.StringToHash("Running");
 
+        private FacingDirection _facingDirection;
+        private float _horizontal, _vertical;
+
         private void Start()
         {
             if (ReferenceEquals(playerSprite, null) && TryGetComponent<SpriteRenderer>(out var spriteRenderer))
@@ -25,15 +28,20 @@ namespace MustafaNaqvi
 
         private void Update()
         {
-            HandleMovementInput();
+            HandleInput();
+            HandleMovement();
+            HandleRotation();
         }
 
-        private void HandleMovementInput()
+        private void HandleInput()
         {
-            var horizontal = Input.GetAxis("Horizontal");
-            var vertical = Input.GetAxis("Vertical");
+            _horizontal = Input.GetAxis("Horizontal");
+            _vertical = Input.GetAxis("Vertical");
+        }
 
-            var movement = new Vector3(horizontal, vertical, 0f);
+        private void HandleMovement()
+        {
+            var movement = new Vector3(_horizontal, _vertical, 0f).normalized;
             if (Equals(movement, Vector3.zero))
             {
                 playerAnimator.SetBool(Running, false);
@@ -43,5 +51,40 @@ namespace MustafaNaqvi
             playerRigidBody.MovePosition(transform.position + movement * (moveSpeed + Time.deltaTime));
             playerAnimator.SetBool(Running, true);
         }
+
+        private void HandleRotation()
+        {
+            if (_vertical.Equals(0f) && _horizontal.Equals(0)) return;
+
+            _facingDirection = _vertical switch
+            {
+                0f when _horizontal > 0f => FacingDirection.Right,
+                0f when _horizontal < 0f => FacingDirection.Left,
+                > 0f when _horizontal > 0f => FacingDirection.Right,
+                > 0f when _horizontal < 0f => FacingDirection.Left,
+                > 0f when _horizontal.Equals(0f) => FacingDirection.Up,
+                < 0f when _horizontal > 0f => FacingDirection.Right,
+                < 0f when _horizontal < 0f => FacingDirection.Left,
+                < 0f when _horizontal.Equals(0f) => FacingDirection.Down,
+                _ => FacingDirection.Right
+            };
+
+            playerSprite.flipX = _facingDirection switch
+            {
+                FacingDirection.Right => false,
+                FacingDirection.Left => true,
+                FacingDirection.Up => false,
+                FacingDirection.Down => false,
+                _ => playerSprite.flipX
+            };
+        }
+    }
+
+    public enum FacingDirection
+    {
+        Right,
+        Left,
+        Up,
+        Down
     }
 }
