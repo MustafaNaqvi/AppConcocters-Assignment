@@ -131,8 +131,8 @@ TextureImporter:
         width: 192
         height: 256
       alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 50, y: 80, z: 50, w: 50}
       outline: []
       physicsShape: []
       tessellationDetail: 0
@@ -152,7 +152,7 @@ TextureImporter:
         width: 192
         height: 128
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -173,7 +173,7 @@ TextureImporter:
         width: 192
         height: 64
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -194,7 +194,7 @@ TextureImporter:
         width: 64
         height: 256
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -215,7 +215,7 @@ TextureImporter:
         width: 64
         height: 128
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -236,7 +236,7 @@ TextureImporter:
         width: 64
         height: 64
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -244,6 +244,27 @@ TextureImporter:
       bones: []
       spriteID: aadc5418338089e4186de1a1df1d2548
       internalID: -296045231
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tilemap_Elevation_6
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 128
+        width: 192
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9740d5558e965774494211c307a90fff
+      internalID: -78745815
       vertices: []
       indices: 
       edges: []
@@ -265,6 +286,7 @@ TextureImporter:
       Tilemap_Elevation_3: -841341697
       Tilemap_Elevation_4: -434796005
       Tilemap_Elevation_5: -296045231
+      Tilemap_Elevation_6: -78745815
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
