@@ -30,6 +30,13 @@ namespace MustafaNaqvi
             health = 0f;
         }
 
+        public void AddHealth(float healthToAdd)
+        {
+            health += healthToAdd;
+            if (health <= healthMaxValue) return;
+            ResetHealth();
+        }
+
         private void ResetHealth() => health = healthMaxValue;
     }
 }
