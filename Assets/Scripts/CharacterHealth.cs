@@ -5,7 +5,6 @@ namespace MustafaNaqvi
 {
     public class CharacterHealth : MonoBehaviour
     {
-        [SerializeField] private PlayerController playerController;
         [SerializeField] private float healthMaxValue;
 
         public float health;
@@ -13,10 +12,7 @@ namespace MustafaNaqvi
 
         private void Start()
         {
-            if (ReferenceEquals(playerController, null) && TryGetComponent<PlayerController>(out var pc))
-                playerController = pc;
-
-            health = healthMaxValue;
+            ResetHealth();
         }
 
         public void Damage(float damage)
