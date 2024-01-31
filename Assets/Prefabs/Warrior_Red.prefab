@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 5565923892229975813}
   - component: {fileID: 6556081880917193565}
   - component: {fileID: 7072528679712103292}
+  - component: {fileID: 7223364692081616362}
   - component: {fileID: 571950108984476302}
   - component: {fileID: 484125258941416843}
   m_Layer: 6
@@ -143,6 +144,21 @@ MonoBehaviour:
   playerController: {fileID: 6556081880917193565}
   playerAnimator: {fileID: 5565923892229975813}
   weaponCollider: {fileID: 2271233326461272848}
+--- !u!114 &7223364692081616362
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4439481353513776549}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 976e5acac7cc3774aa96b307d0d70f83, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerController: {fileID: 6556081880917193565}
+  manaRegenerationTime: 10
+  manaMaxValue: 100
 --- !u!50 &571950108984476302
 Rigidbody2D:
   serializedVersion: 4
