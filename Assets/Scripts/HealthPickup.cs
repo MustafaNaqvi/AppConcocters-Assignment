@@ -15,8 +15,8 @@ namespace MustafaNaqvi
         {
             if (!collectingObject.TryGetComponent<CharacterHealth>(out var health)) return;
             health.AddHealth(healthToAdd);
-            if (ReferenceEquals(spawnedObject, null)) return;
-            Destroy(spawnedObject);
+            if (ReferenceEquals(SpawnedObject, null)) return;
+            Destroy(SpawnedObject);
             if (!IsInvoking(nameof(Spawn))) return;
             CancelInvoke(nameof(Spawn));
             InvokeRepeating(nameof(Spawn), spawnTime, spawnTime);
