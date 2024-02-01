@@ -32,7 +32,7 @@ namespace MustafaNaqvi
         private void HandleMeleeAttack()
         {
             if (ReferenceEquals(playerController, null)) return;
-            if (!Input.GetKeyUp(KeyCode.Space) || Attacking) return;
+            if (!Input.GetMouseButtonUp(0) || Attacking) return;
 
             Attacking = true;
 
@@ -70,6 +70,7 @@ namespace MustafaNaqvi
             if (ReferenceEquals(playerController, null)) return;
             if (ReferenceEquals(weaponCollider, null)) return;
 
+            /*
             var offset = weaponCollider.offset;
             switch (playerController.FacingDirection)
             {
@@ -91,7 +92,8 @@ namespace MustafaNaqvi
             }
 
             weaponCollider.offset = offset;
-            weaponCollider.size = Vector2.one * 0.5f;
+            */
+            weaponCollider.size = Vector2.one * 1.25f;
         }
 
         private void ResetAttacking()
@@ -111,6 +113,7 @@ namespace MustafaNaqvi
         private void OnCollisionEnter2D(Collision2D other)
         {
             if (!other.collider.CompareTag("Damageable")) return;
+            if (!ReferenceEquals(other.otherCollider, weaponCollider)) return;
             if (!other.collider.TryGetComponent<CharacterHealth>(out var health)) return;
             GiveDamage(health);
         }
