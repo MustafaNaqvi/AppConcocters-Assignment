@@ -8,11 +8,27 @@ namespace MustafaNaqvi
         [SerializeField] private NavMeshAgent agent;
         [SerializeField] private Animator animator;
         [SerializeField] private SpriteRenderer enemySprite;
+        [SerializeField] private GameObject onDeathVFX;
 
         internal PlayerController PlayerController;
+        internal CharacterHealth EnemyHealth;
         internal bool ReachedPlayer;
 
         private static readonly int Running = Animator.StringToHash("Running");
+
+        private void OnEnable()
+        {
+            if (ReferenceEquals(EnemyHealth, null) && TryGetComponent<CharacterHealth>(out var enemyHealth))
+                EnemyHealth = enemyHealth;
+            if (ReferenceEquals(EnemyHealth, null)) return;
+            EnemyHealth.death += OnDeath;
+        }
+
+        private void OnDisable()
+        {
+            if (ReferenceEquals(EnemyHealth, null)) return;
+            EnemyHealth.death -= OnDeath;
+        }
 
         private void Start()
         {
@@ -46,6 +62,17 @@ namespace MustafaNaqvi
         {
             if (ReferenceEquals(enemySprite, null)) return;
             enemySprite.flipX = PlayerController.transform.position.x < transform.position.x;
+        }
+
+        private void OnDeath()
+        {
+            Invoke(nameof(Die), 1f);
+        }
+
+        private void Die()
+        {
+            Instantiate(onDeathVFX, transform.position, Quaternion.identity);
+            Destroy(gameObject);
         }
     }
 }
