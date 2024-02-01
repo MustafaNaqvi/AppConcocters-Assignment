@@ -69,7 +69,7 @@ MonoBehaviour:
   rangedAttackObject: {fileID: 5117954115719179646, guid: 9e710d631ba087d4e992adf00e470f40, type: 3}
   animator: {fileID: 6394087115180969079}
   damageToGive: 10
-  rangedAttackSpeed: 1
+  rangedAttackSpeed: 1.5
   bufferTimeBetweenAttacks: 2
 --- !u!114 &2080158628826045385
 MonoBehaviour:
