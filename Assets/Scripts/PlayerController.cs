@@ -14,6 +14,7 @@ namespace MustafaNaqvi
 
         internal FacingDirection FacingDirection;
         private float _horizontal, _vertical;
+        private bool _keyCollected;
 
         private void Start()
         {
@@ -28,6 +29,7 @@ namespace MustafaNaqvi
 
             if (ReferenceEquals(meleeAttack, null) && TryGetComponent<MeleeAttack>(out var ma))
                 meleeAttack = ma;
+            KeyPickup.KeyCollected += () => _keyCollected = true;
         }
 
         private void Update()
@@ -82,6 +84,13 @@ namespace MustafaNaqvi
                 FacingDirection.Down => false,
                 _ => playerSprite.flipX
             };
+        }
+
+        private void OnCollisionEnter2D(Collision2D other)
+        {
+            if (!other.collider.CompareTag("Door")) return;
+            if (!_keyCollected) return;
+            // Game Complete
         }
     }
 
