@@ -9,12 +9,14 @@ namespace MustafaNaqvi
         [SerializeField] private Animator animator;
         [SerializeField] private SpriteRenderer enemySprite;
 
-        private PlayerController _playerController;
+        internal PlayerController PlayerController;
+        internal bool ReachedPlayer;
+
         private static readonly int Running = Animator.StringToHash("Running");
 
         private void Start()
         {
-            _playerController ??= FindObjectOfType<PlayerController>();
+            PlayerController ??= FindObjectOfType<PlayerController>();
 
             if (ReferenceEquals(agent, null) && TryGetComponent<NavMeshAgent>(out var ag))
                 agent = ag;
@@ -23,7 +25,7 @@ namespace MustafaNaqvi
             agent.updateRotation = agent.updateUpAxis = false;
         }
 
-        private void LateUpdate()
+        private void Update()
         {
             HandleMovement();
             HandleRotation();
@@ -31,17 +33,19 @@ namespace MustafaNaqvi
 
         private void HandleMovement()
         {
-            if (ReferenceEquals(_playerController, null)) return;
+            if (ReferenceEquals(PlayerController, null)) return;
             if (ReferenceEquals(agent, null)) return;
             if (ReferenceEquals(animator, null)) return;
-            agent.SetDestination(_playerController.transform.position + Vector3.up);
-            animator.SetBool(Running, agent.remainingDistance > agent.stoppingDistance);
+            agent.SetDestination(PlayerController.transform.position + Vector3.up);
+            if (agent.remainingDistance <= 0f) return;
+            ReachedPlayer = agent.remainingDistance < agent.stoppingDistance;
+            animator.SetBool(Running, !ReachedPlayer);
         }
 
         private void HandleRotation()
         {
             if (ReferenceEquals(enemySprite, null)) return;
-            enemySprite.flipX = _playerController.transform.position.x < transform.position.x;
+            enemySprite.flipX = PlayerController.transform.position.x < transform.position.x;
         }
     }
 }

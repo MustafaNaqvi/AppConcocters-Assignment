@@ -74,24 +74,24 @@ namespace MustafaNaqvi
             switch (playerController.FacingDirection)
             {
                 case FacingDirection.Right:
-                    offset.x += 0.5f;
+                    offset.x += 0.25f;
                     break;
 
                 case FacingDirection.Left:
-                    offset.x -= 0.5f;
+                    offset.x -= 0.25f;
                     break;
 
                 case FacingDirection.Up:
-                    offset.y += 0.5f;
+                    offset.y += 0.25f;
                     break;
 
                 case FacingDirection.Down:
-                    offset.y -= 0.5f;
+                    offset.y -= 0.25f;
                     break;
             }
 
             weaponCollider.offset = offset;
-            weaponCollider.size = Vector2.one * 0.75f;
+            weaponCollider.size = Vector2.one * 0.5f;
         }
 
         private void ResetAttacking()
@@ -111,7 +111,6 @@ namespace MustafaNaqvi
         private void OnCollisionEnter2D(Collision2D other)
         {
             if (!other.collider.CompareTag("Damageable")) return;
-            if (!ReferenceEquals(other.otherCollider, weaponCollider)) return;
             if (!other.collider.TryGetComponent<CharacterHealth>(out var health)) return;
             GiveDamage(health);
         }
