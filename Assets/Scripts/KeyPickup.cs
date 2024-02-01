@@ -24,5 +24,10 @@ namespace MustafaNaqvi
             KeyCollected?.Invoke();
             Destroy(SpawnedObject);
         }
+
+        private void OnDestroy()
+        {
+            KeyCollected = null;
+        }
     }
 }
