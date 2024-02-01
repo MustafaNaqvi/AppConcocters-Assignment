@@ -8,11 +8,14 @@ namespace MustafaNaqvi
         [SerializeField] private Animator playerAnimator;
         [SerializeField] private Rigidbody2D playerRigidBody;
         [SerializeField] private MeleeAttack meleeAttack;
+        [SerializeField] private GameObject deathVFX;
         [SerializeField] private float moveSpeed;
 
         private static readonly int Running = Animator.StringToHash("Running");
 
         internal FacingDirection FacingDirection;
+        internal CharacterHealth PlayerHealth;
+
         private float _horizontal, _vertical;
         private bool _keyCollected;
 
@@ -29,6 +32,13 @@ namespace MustafaNaqvi
 
             if (ReferenceEquals(meleeAttack, null) && TryGetComponent<MeleeAttack>(out var ma))
                 meleeAttack = ma;
+
+            if (ReferenceEquals(PlayerHealth, null) && TryGetComponent<CharacterHealth>(out var health))
+                PlayerHealth = health;
+
+            if (!ReferenceEquals(PlayerHealth, null))
+                PlayerHealth.death += OnDeath;
+
             KeyPickup.KeyCollected += () => _keyCollected = true;
         }
 
@@ -84,6 +94,13 @@ namespace MustafaNaqvi
                 FacingDirection.Down => false,
                 _ => playerSprite.flipX
             };
+        }
+
+        private void OnDeath()
+        {
+            Instantiate(deathVFX, transform.position, Quaternion.identity);
+            // Game Over
+            gameObject.SetActive(false);
         }
 
         private void OnCollisionEnter2D(Collision2D other)
