@@ -19,6 +19,8 @@ namespace MustafaNaqvi
         private float _horizontal, _vertical;
         private bool _keyCollected;
 
+        public System.Action win;
+
         private void Start()
         {
             if (ReferenceEquals(playerSprite, null) && TryGetComponent<SpriteRenderer>(out var spriteRenderer))
@@ -108,6 +110,7 @@ namespace MustafaNaqvi
             if (!other.collider.CompareTag("Door")) return;
             if (!_keyCollected) return;
             // Game Complete
+            win?.Invoke();
         }
     }
 
