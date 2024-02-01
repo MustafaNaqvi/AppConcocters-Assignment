@@ -1,3 +1,4 @@
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -7,12 +8,17 @@ namespace MustafaNaqvi
     {
         [SerializeField] private Image healthFill;
         [SerializeField] private Image manaFill;
+        [SerializeField] private TMP_Text playerProgressText;
 
         private PlayerController _playerController;
 
         private void Start()
         {
             _playerController ??= FindObjectOfType<PlayerController>();
+
+            playerProgressText.text = $"\u2022 Collect Key";
+
+            KeyPickup.KeyCollected += () => playerProgressText.text = $"\u2022 Go To Door";
         }
 
         private void LateUpdate()
