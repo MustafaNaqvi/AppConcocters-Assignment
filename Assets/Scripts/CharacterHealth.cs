@@ -7,6 +7,7 @@ namespace MustafaNaqvi
     {
         [SerializeField] private float healthMaxValue;
 
+        public float MaxHealth => healthMaxValue;
         public float health;
         public Action death;
 

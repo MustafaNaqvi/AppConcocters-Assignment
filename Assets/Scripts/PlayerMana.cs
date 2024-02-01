@@ -10,6 +10,8 @@ namespace MustafaNaqvi
 
         internal float Mana;
 
+        public float MaxMana => manaMaxValue;
+
         private void Start()
         {
             if (ReferenceEquals(playerController, null) && TryGetComponent<PlayerController>(out var pc))
