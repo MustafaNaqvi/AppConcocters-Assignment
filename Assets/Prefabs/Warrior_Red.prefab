@@ -215,6 +215,7 @@ MonoBehaviour:
   playerAnimator: {fileID: 5565923892229975813}
   playerRigidBody: {fileID: 571950108984476302}
   meleeAttack: {fileID: 7072528679712103292}
+  deathVFX: {fileID: 3776524201923600273, guid: e4c575ae236937c43abc807803953be6, type: 3}
   moveSpeed: 0.05
 --- !u!114 &7072528679712103292
 MonoBehaviour:

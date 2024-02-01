@@ -21,10 +21,19 @@ namespace MustafaNaqvi
         {
             if (ReferenceEquals(_enemyController, null) && TryGetComponent<EnemyController>(out var enemyController))
                 _enemyController = enemyController;
+
+            if (ReferenceEquals(_enemyController, null)) return;
+
+            if (ReferenceEquals(_enemyController.EnemyHealth, null)) return;
+
+            _enemyController.EnemyHealth.death += StopAttack;
         }
 
         private void LateUpdate()
         {
+            if (ReferenceEquals(_enemyController.EnemyHealth, null)) return;
+            if (_enemyController.EnemyHealth.health <= 0) return;
+
             if (_elapsedTime < bufferTimeBetweenAttacks)
             {
                 _elapsedTime += Time.deltaTime;
@@ -92,6 +101,8 @@ namespace MustafaNaqvi
 
         private void GiveDamage()
         {
+            if (ReferenceEquals(_enemyController.EnemyHealth, null)) return;
+            if (_enemyController.EnemyHealth.health <= 0f) return;
             if (ReferenceEquals(_enemyController.PlayerController, null)) return;
             if (ReferenceEquals(_spawnedRangedAttackObject, null)) return;
 
