@@ -53,6 +53,7 @@ MonoBehaviour:
   agent: {fileID: 2387550893406985596}
   animator: {fileID: 6394087115180969079}
   enemySprite: {fileID: 8032609342398986268}
+  onDeathVFX: {fileID: 3776524201923600273, guid: e4c575ae236937c43abc807803953be6, type: 3}
 --- !u!114 &8062347651044989994
 MonoBehaviour:
   m_ObjectHideFlags: 0
