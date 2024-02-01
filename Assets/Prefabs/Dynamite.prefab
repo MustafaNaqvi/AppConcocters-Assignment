@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 5124080012460377668}
   - component: {fileID: 2131570549032143247}
   - component: {fileID: 4726692550197819384}
+  - component: {fileID: 8157124108896535687}
   m_Layer: 0
   m_Name: Dynamite
   m_TagString: Untagged
@@ -106,3 +107,16 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &8157124108896535687
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5117954115719179646}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9fbe1eb8494498b4caca109a42413ecd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  waitTime: 4
