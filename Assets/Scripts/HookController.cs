@@ -71,14 +71,17 @@ namespace MustafaNaqvi
         private void MoveHookToTarget()
         {
             if (ReferenceEquals(hookTransform, null)) return;
+            if (ReferenceEquals(_hookTarget, null))
+            {
+                IsHooking = false;
+                return;
+            }
+
             hookTransform.position =
                 Vector2.MoveTowards(hookTransform.position, _hookTarget.position, hookSpeed * Time.deltaTime);
 
-            if (Vector2.Distance(hookTransform.position, _hookTarget.position) < 0.1f)
-            {
-                IsHooking = false;
-                // Add logic to apply damage or perform other actions on the hooked object
-            }
+            if (!(Vector2.Distance(hookTransform.position, _hookTarget.position) < 0.1f)) return;
+            IsHooking = false;
         }
 
         private void RetractHook()
