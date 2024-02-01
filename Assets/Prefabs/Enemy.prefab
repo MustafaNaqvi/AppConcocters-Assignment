@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 2243374805694191464}
   - component: {fileID: 8097968721511405211}
   - component: {fileID: 8062347651044989994}
+  - component: {fileID: 2080158628826045385}
   - component: {fileID: 2224841625732691795}
   - component: {fileID: 6362281334026882204}
   - component: {fileID: 2387550893406985596}
@@ -69,6 +70,20 @@ MonoBehaviour:
   damageToGive: 10
   rangedAttackSpeed: 1
   bufferTimeBetweenAttacks: 2
+--- !u!114 &2080158628826045385
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5791267542099851275}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 21c63dd164536fd4da8285fcc952057b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  healthMaxValue: 100
+  health: 100
 --- !u!50 &2224841625732691795
 Rigidbody2D:
   serializedVersion: 4
